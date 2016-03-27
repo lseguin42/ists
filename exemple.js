@@ -13,22 +13,7 @@ var _4 = is.number.in.list(67, 34, 21, 43).and.not.in.list(15, 85, 21, 78, 43)
 
 
 
-var exemples = [
-    "natoo",
-    "miaou",
-    "fuckit",
-    "haaha",
-    313,
-    67,
-    34,
-    6,
-    21,
-    43,
-    -1,
-    -9,
-    "Nuloss",
-    "norbert"
-];
+var exemples = [ "natoo", "miaou", "fuckit", "haaha", 313, 67, 34, 6, 21, 43, -1, -9, "Nuloss", "norbert" ];
 
 var d = function (b) {
     return b ? 'x' : ' ';
@@ -38,3 +23,19 @@ _.forEach(exemples, function(e) {
     console.log(e + "\t[" + d(_1(e)) + "]\t[" + d(_2(e)) + "]\t[" + d(_3(e)) + "]\t[" + d(_4(e)) + "]");
 })
 
+/**
+natoo   [ ]     [ ]     [x]     [x]
+miaou   [ ]     [ ]     [x]     [x]
+fuckit  [ ]     [ ]     [x]     [ ]
+haaha   [ ]     [ ]     [x]     [ ]
+313     [ ]     [x]     [x]     [ ]
+67      [ ]     [x]     [x]     [x]
+34      [ ]     [ ]     [ ]     [x]
+6       [x]     [ ]     [ ]     [ ]
+21      [ ]     [ ]     [ ]     [ ]
+43      [ ]     [ ]     [ ]     [ ]
+-1      [ ]     [ ]     [x]     [ ]
+-9      [ ]     [x]     [x]     [ ]
+Nuloss  [ ]     [ ]     [x]     [ ]
+norbert [ ]     [ ]     [x]     [x]
+ */
