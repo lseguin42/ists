@@ -1,0 +1,23 @@
+{
+  "name": "checkjs",
+  "version": "0.1.0",
+  "description": "Alpha",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lseguin42/CheckJS.git"
+  },
+  "author": "Lionel Seguin (lseguin@student.42.fr)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lseguin42/CheckJS/issues"
+  },
+  "homepage": "https://github.com/lseguin42/CheckJS#readme"
+}
