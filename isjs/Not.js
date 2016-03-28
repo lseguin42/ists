@@ -1,4 +1,4 @@
-function NotLinker(linker, linkerArgs) {
+function NotLinker(linker) {
     var self = this;
     
     if (typeof self._isNotContext === "undefined") {
@@ -8,7 +8,7 @@ function NotLinker(linker, linkerArgs) {
             });
         }
         self.not._isNotContext = true;
-        linker.apply(self.not, linkerArgs);
+        linker.call(self.not);
     }
     else
         delete self['_isNotContext'];

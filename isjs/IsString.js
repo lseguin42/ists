@@ -1,3 +1,4 @@
+var inherit = require('./tools/inherit.js');
 var Rules = require('./Rules.js');
 var NotLinker = require('./Not.js');
 var InLinker = require('./In.js');
@@ -36,8 +37,6 @@ function IsString(value, next) {
         return typeof value === 'string' && next(value);
     return typeof value === 'string';
 }
-IsStringLinker.call(IsString);
-IsStringLinker.__type__ = IsString;
-IsString.linker = IsStringLinker;
+inherit(IsString, IsStringLinker);
 
 module.exports = IsString;

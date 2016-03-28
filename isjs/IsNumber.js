@@ -1,6 +1,8 @@
 var Rules = require('./Rules.js');
 var NotLinker = require('./Not.js');
 var InLinker = require('./In.js').extends;
+var bindArgs = require('./tools/bindArgs.js');
+var inherit = require('./tools/inherit.js');
 
 function IsNumberLinker(ParentLinker) {
     var self = this;
@@ -36,7 +38,7 @@ function IsNumberLinker(ParentLinker) {
         });
     }
     
-    NotLinker.call(self, IsNumberLinker, [ParentLinker]);
+    NotLinker.call(self, bindArgs(IsNumberLinker, [ParentLinker]));
     InLinker.call(self, linker);
     
     return self;
@@ -47,8 +49,6 @@ function IsNumber(value, next) {
         return typeof value === 'number' && next(value);
     return typeof value === 'number';
 }
-IsNumberLinker.call(IsNumber);
-IsNumberLinker.__type__ = IsNumber;
-IsNumber.linker = IsNumberLinker;
+inherit(IsNumber, IsNumberLinker);
 
 module.exports = IsNumber;

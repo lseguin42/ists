@@ -1,6 +1,8 @@
 var _ = require('lodash');
 var is = require('./isjs');
 
+function A() {}
+
 var rules = [
     
     is.number.equal(6),
@@ -12,8 +14,15 @@ var rules = [
     is.string.len.not.inf(6).or.match(/^m/),
     
     is.number.in.list(67, 34, 21, 43).and.not.in.list(15, 85, 21, 78, 43)
-      .or(is.string.len.in.list(2, 4, 10).and.len.in.range(0, 5))
+      .or(is.string.len.in.list(2, 4, 10).and.len.in.range(0, 5)),
     
+    /*
+    is.object.with.properties({
+        attr: is.string.match(/^[A-Z]/).or(is.undefined), // is optional
+        name: is.string.match(/^[A-Za-z]{3,10}$/),
+        obj: is.object.instanceOf(A)
+    })
+    */
 ];
 
 var exemples = [ "natoo", "miaou", "fuckit", "haha", 313, 67, 34, "AZER", 6, 21, 43, -1, -9, "Nuloss", "norbert", "aa", "BcD" ];
