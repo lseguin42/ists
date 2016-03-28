@@ -1,20 +1,18 @@
 function Rules(linker, validator) {
     var self = this;
-    var requireCheckType = true;
     
     var rules = function (value) {
-        return self(value, function () {
-            return validator(value);
+        return self(value, function (_value) {
+            return validator(_value);
         });
     }
     
     rules.or = function (valueOrRules, next) {
         if (typeof next === 'function') {
-            return rules(valueOrRules) || (linker.__type__(valueOrRules) && next());
+            return rules(valueOrRules) || (linker.__type__(valueOrRules) && next(valueOrRules));
         }
-        requireCheckType = false;
         return Rules.call(function (value, next) {
-            return rules(value) || next();
+            return rules(value) || next(value);
         }, null, valueOrRules);
     }
     
@@ -23,7 +21,7 @@ function Rules(linker, validator) {
     
     rules.and = function (valueOrRules, next) {
         if (typeof next === 'function') {
-            return rules(valueOrRules) && next();
+            return rules(valueOrRules) && next(valueOrRules);
         }
         return Rules.call(rules.and, null, valueOrRules);
     }

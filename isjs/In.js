@@ -5,7 +5,6 @@ function linkerDefault(linker) {
     
     self.array = function (tab) {
         return Rules.call(self, linker, function (value) {
-            //console.log('CALLED ?');
             for (var i = 0; i < tab.length; i++) {
                 if (value === tab[i])
                     return true;
@@ -17,7 +16,6 @@ function linkerDefault(linker) {
     self.list = function () {
         var tab = Array.prototype.slice.call(arguments);
         return Rules.call(self, linker, function (value) {
-            //console.log('CALLED ?');
             for (var i = 0; i < tab.length; i++) {
                 if (value === tab[i])
                     return true;
@@ -34,7 +32,6 @@ function linkerExtends(linker) {
     
     self.range = function (min, max) {
         return Rules.call(self, linker, function (value) {
-           // console.log('CALLED ?');
             return value >= min && value <= max;
         });
     }
