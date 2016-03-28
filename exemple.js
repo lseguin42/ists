@@ -7,16 +7,16 @@ var rules = [
     
     is.number.inf(-5).or.sup(50),
     
-    is.number.not.in.range(5, 50).or(is.string),
+    is.string,
     
     is.string.len.not.inf(6).or.match(/^m/),
     
     is.number.in.list(67, 34, 21, 43).and.not.in.list(15, 85, 21, 78, 43)
-      .or(is.string.len.not.in.list(4, 7).or.equal("norbert"))
+      .or(is.string.len.in.list(2, 4, 10).and.len.in.range(0, 5))
     
 ];
 
-var exemples = [ "natoo", "miaou", "fuckit", "haha", 313, 67, 34, 6, 21, 43, -1, -9, "Nuloss", "norbert" ];
+var exemples = [ "natoo", "miaou", "fuckit", "haha", 313, 67, 34, "AZER", 6, 21, 43, -1, -9, "Nuloss", "norbert", "aa", "BcD" ];
 
 _.forEach(exemples, function(e) {
     process.stdout.write("" + e);
@@ -29,19 +29,24 @@ _.forEach(exemples, function(e) {
     process.stdout.write("\n");
 });
 
-/**
-natoo   [ ]     [ ]     [x]     [ ]     [x]
-miaou   [ ]     [ ]     [x]     [x]     [x]
-fuckit  [ ]     [ ]     [x]     [x]     [x]
-haha    [ ]     [ ]     [x]     [ ]     [ ]
-313     [ ]     [x]     [x]     [ ]     [ ]
-67      [ ]     [x]     [x]     [ ]     [x]
-34      [ ]     [ ]     [ ]     [ ]     [x]
-6       [x]     [ ]     [ ]     [ ]     [ ]
-21      [ ]     [ ]     [ ]     [ ]     [ ]
-43      [ ]     [ ]     [ ]     [ ]     [ ]
--1      [ ]     [ ]     [x]     [ ]     [ ]
--9      [ ]     [x]     [x]     [ ]     [ ]
-Nuloss  [ ]     [ ]     [x]     [x]     [x]
-norbert [ ]     [ ]     [x]     [x]     [x]
+/** ********************************************** *
+ *  TEST    [0]     [1]     [2]     [3]     [4]    *
+ * _______________________________________________ *
+ *  natoo   [ ]     [ ]     [x]     [ ]     [ ]
+ *  miaou   [ ]     [ ]     [x]     [x]     [ ]
+ *  fuckit  [ ]     [ ]     [x]     [x]     [ ]
+ *  haha    [ ]     [ ]     [x]     [ ]     [x]
+ *  313     [ ]     [x]     [ ]     [ ]     [ ]
+ *  67      [ ]     [x]     [ ]     [ ]     [x]
+ *  34      [ ]     [ ]     [ ]     [ ]     [x]
+ *  AZER    [ ]     [ ]     [x]     [ ]     [x]
+ *  6       [x]     [ ]     [ ]     [ ]     [ ]
+ *  21      [ ]     [ ]     [ ]     [ ]     [ ]
+ *  43      [ ]     [ ]     [ ]     [ ]     [ ]
+ *  -1      [ ]     [ ]     [ ]     [ ]     [ ]
+ *  -9      [ ]     [x]     [ ]     [ ]     [ ]
+ *  Nuloss  [ ]     [ ]     [x]     [x]     [ ]
+ *  norbert [ ]     [ ]     [x]     [x]     [ ]
+ *  aa      [ ]     [ ]     [x]     [ ]     [x]
+ *  BcD     [ ]     [ ]     [x]     [ ]     [ ]
  */
