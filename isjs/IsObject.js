@@ -1,5 +1,7 @@
 var inherit = require('./tools/inherit.js');
 var Rules = require('./Rules.js');
+var WithLinker = require('./With.js');
+var NotLinker = require('./Not.js');
 
 function IsObjectLinker() {
     var self = this;
@@ -9,6 +11,9 @@ function IsObjectLinker() {
             return value instanceof type;
         });
     }
+    
+    NotLinker.call(self, IsObjectLinker);
+    WithLinker.call(self, IsObjectLinker);
 
     return self;
 }

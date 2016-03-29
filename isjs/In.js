@@ -1,9 +1,11 @@
 var Rules = require('./Rules.js');
 
-function linkerDefault(linker) {
+function InLinker(linker) {
     var self = this;
     
-    self.array = function (tab) {
+    self.in = {};
+    
+    self.in.array = function (tab) {
         return Rules.call(self, linker, function (value) {
             for (var i = 0; i < tab.length; i++) {
                 if (value === tab[i])
@@ -13,7 +15,7 @@ function linkerDefault(linker) {
         });
     }
     
-    self.list = function () {
+    self.in.list = function () {
         var tab = Array.prototype.slice.call(arguments);
         return Rules.call(self, linker, function (value) {
             for (var i = 0; i < tab.length; i++) {
@@ -27,33 +29,16 @@ function linkerDefault(linker) {
     return self;
 }
 
-function linkerExtends(linker) {
-    var self = linkerDefault.call(this, linker);
+InLinker.extends = function (linker) {
+    var self = InLinker.call(this, linker);
     
-    self.range = function (min, max) {
+    self.in.range = function (min, max) {
         return Rules.call(self, linker, function (value) {
             return value >= min && value <= max;
         });
     }
     
     return self;
-}
-
-function generic(linkerContainer, linker) {
-    var self = this;
-    self.in = function (value, next) {
-        return self(value, next);
-    }
-    linkerContainer.call(self.in, linker);
-    return self;
-}
-
-function InLinker(linker) {
-    return generic.call(this, linkerDefault, linker);
-}
-
-InLinker.extends = function (linker) {
-    return generic.call(this, linkerExtends, linker);
 }
 
 module.exports = InLinker;

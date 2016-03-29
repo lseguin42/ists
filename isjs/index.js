@@ -1,4 +1,4 @@
-module.exports = {
+var is = {
     
     number: require('./IsNumber.js'),
     
@@ -17,3 +17,5 @@ module.exports = {
     function: require('./IsFunction.js')
     
 };
+
+module.exports = is;
