@@ -2,6 +2,7 @@ var inherit = require('./tools/inherit.js');
 
 function IsAnyLinker() {
     var self = this;
+    
     return self;
 }
 

@@ -17,37 +17,81 @@ var rules = [
       .or(is.string.len.in.list(2, 4, 10).and.len.in.range(0, 5)),
     
     is.object.with.properties({
-        attr: is.string.match(/^[A-Z]/).or(is.undefined), // is optional
-        name: is.string.match(/^[A-Za-z]{3,10}$/),
-        obj: is.object.instanceOf(A)
-    })
+        a: is.object.instanceOf(A),
+        b: is.string.match(/^[A-Z]/).or(is.undefined) // property 'b' is optional
+    }).or(is.string.len.inf(5)),
+    
+    is.array.len.sup(2).and.each(is.number, {end: -2})
+                       .and.each(is.string.match(/^m/), {start: -2})
+
 ];
 
-var exemples = [ { attr: "Akdza", name: "Aaaa", obj: new A() }, "natoo", "miaou", "fuckit", "haha", 313, 67, 34, "AZER", 6, 21, 43, -1, -9, "Nuloss", "norbert", "aa", "BcD" ];
+var exemples = [
+    [ 5, 1, 0, -1, -2, "mtg", "ms" ],
+    [ "string", 5 ],
+    { a: new A(), b: "Aaaa" },
+    { a: new A(), b: "bbbb" },
+    { a: new A() },
+    { a: null, b: "Aaaa" },
+    "natoo",
+    "miaou",
+    "fuckit",
+    "haha",
+    313,
+    67,
+    34,
+    "AZER",
+    6,
+    21,
+    43,
+    -1,
+    -9,
+    "Nuloss",
+    "norbert",
+    "aa",
+    "BcD"
+];
 
+
+
+var max = 0;
+var table = [];
 _.forEach(exemples, function(e) {
-    process.stdout.write("" + e);
+    var name = e + "";
+    var raw = [name];
+    max = (name.length > max ? name.length : max);
+    
+    // rules
     _.forEach(rules, function (f) {
-        if (f(e))
-            process.stdout.write("\t[x]");
-        else
-            process.stdout.write("\t[ ]");
+        raw.push(f(e));
     });
-    process.stdout.write("\n");
+   
+    table.push(raw);
+});
+_.forEach(table, function (raw) {
+    var name = raw[0];
+    var line = " " + name;
+    for (var i = 0; i < (max - name.length) + 1; i++)
+        line += " ";
+    for (var i = 1; i < raw.length; i++)
+        line += "[" + (raw[i] ? 'x' : ' ') + "]     ";
+    console.log(line);
 });
 
-/** ******************************************************** *
- *  TEST         [0]     [1]     [2]     [3]     [4]     [5] *
- * _________________________________________________________ *
+/** ********************************************************* *
+ *  TEST         [0]     [1]     [2]     [3]     [4]     [5]  *
+ * __________________________________________________________ *
+ [object Object] [ ]     [ ]     [ ]     [ ]     [ ]     [x]
+ [object Object] [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
  [object Object] [ ]     [ ]     [ ]     [ ]     [ ]     [x]
  natoo           [ ]     [ ]     [x]     [ ]     [ ]     [ ]
  miaou           [ ]     [ ]     [x]     [x]     [ ]     [ ]
  fuckit          [ ]     [ ]     [x]     [x]     [ ]     [ ]
- haha            [ ]     [ ]     [x]     [ ]     [x]     [ ]
+ haha            [ ]     [ ]     [x]     [ ]     [x]     [x]
  313             [ ]     [x]     [ ]     [ ]     [ ]     [ ]
  67              [ ]     [x]     [ ]     [ ]     [x]     [ ]
  34              [ ]     [ ]     [ ]     [ ]     [x]     [ ]
- AZER            [ ]     [ ]     [x]     [ ]     [x]     [ ]
+ AZER            [ ]     [ ]     [x]     [ ]     [x]     [x]
  6               [x]     [ ]     [ ]     [ ]     [ ]     [ ]
  21              [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
  43              [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
@@ -55,6 +99,6 @@ _.forEach(exemples, function(e) {
  -9              [ ]     [x]     [ ]     [ ]     [ ]     [ ]
  Nuloss          [ ]     [ ]     [x]     [x]     [ ]     [ ]
  norbert         [ ]     [ ]     [x]     [x]     [ ]     [ ]
- aa              [ ]     [ ]     [x]     [ ]     [x]     [ ]
- BcD             [ ]     [ ]     [x]     [ ]     [ ]     [ ]
+ aa              [ ]     [ ]     [x]     [ ]     [x]     [x]
+ BcD             [ ]     [ ]     [x]     [ ]     [ ]     [x]
  */
