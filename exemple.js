@@ -21,14 +21,13 @@ var rules = [
         b: is.string.match(/^[A-Z]/).or(is.undefined) // property 'b' is optional
     }).or(is.string.len.inf(5)),
     
-    is.array.len.sup(2).and.each(is.number, {end: -2})
-                       .and.each(is.string.match(/^m/), {start: -2})
+    is.array.len.supeq(2).and.each(is.number).or.each(is.string.match(/^m/))
 
 ];
 
 var exemples = [
-    [ 5, 1, 0, -1, -2, "mtg", "ms" ],
-    [ "string", 5 ],
+    [ 5, 1, 0, -1, -2 ],
+    [ "mdwqoi", "mwopqk", "A" ],
     { a: new A(), b: "Aaaa" },
     { a: new A(), b: "bbbb" },
     { a: new A() },
@@ -78,27 +77,30 @@ _.forEach(table, function (raw) {
     console.log(line);
 });
 
-/** ********************************************************* *
- *  TEST         [0]     [1]     [2]     [3]     [4]     [5]  *
- * __________________________________________________________ *
- [object Object] [ ]     [ ]     [ ]     [ ]     [ ]     [x]
- [object Object] [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
- [object Object] [ ]     [ ]     [ ]     [ ]     [ ]     [x]
- natoo           [ ]     [ ]     [x]     [ ]     [ ]     [ ]
- miaou           [ ]     [ ]     [x]     [x]     [ ]     [ ]
- fuckit          [ ]     [ ]     [x]     [x]     [ ]     [ ]
- haha            [ ]     [ ]     [x]     [ ]     [x]     [x]
- 313             [ ]     [x]     [ ]     [ ]     [ ]     [ ]
- 67              [ ]     [x]     [ ]     [ ]     [x]     [ ]
- 34              [ ]     [ ]     [ ]     [ ]     [x]     [ ]
- AZER            [ ]     [ ]     [x]     [ ]     [x]     [x]
- 6               [x]     [ ]     [ ]     [ ]     [ ]     [ ]
- 21              [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
- 43              [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
- -1              [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
- -9              [ ]     [x]     [ ]     [ ]     [ ]     [ ]
- Nuloss          [ ]     [ ]     [x]     [x]     [ ]     [ ]
- norbert         [ ]     [ ]     [x]     [x]     [ ]     [ ]
- aa              [ ]     [ ]     [x]     [ ]     [x]     [x]
- BcD             [ ]     [ ]     [x]     [ ]     [ ]     [x]
+/** ******************************************************************* *
+ *  TEST            [0]     [1]     [2]     [3]     [4]     [5]     [6] *
+ * ____________________________________________________________________ *
+ 5,1,0,-1,-2,mtg,ms [ ]     [ ]     [ ]     [ ]     [ ]     [ ]     [x]
+ string,5           [ ]     [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
+ [object Object]    [ ]     [ ]     [ ]     [ ]     [ ]     [x]     [ ]
+ [object Object]    [ ]     [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
+ [object Object]    [ ]     [ ]     [ ]     [ ]     [ ]     [x]     [ ]
+ [object Object]    [ ]     [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
+ natoo              [ ]     [ ]     [x]     [ ]     [ ]     [ ]     [ ]
+ miaou              [ ]     [ ]     [x]     [x]     [ ]     [ ]     [ ]
+ fuckit             [ ]     [ ]     [x]     [x]     [ ]     [ ]     [ ]
+ haha               [ ]     [ ]     [x]     [ ]     [x]     [x]     [ ]
+ 313                [ ]     [x]     [ ]     [ ]     [ ]     [ ]     [ ]
+ 67                 [ ]     [x]     [ ]     [ ]     [x]     [ ]     [ ]
+ 34                 [ ]     [ ]     [ ]     [ ]     [x]     [ ]     [ ]
+ AZER               [ ]     [ ]     [x]     [ ]     [x]     [x]     [ ]
+ 6                  [x]     [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
+ 21                 [ ]     [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
+ 43                 [ ]     [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
+ -1                 [ ]     [ ]     [ ]     [ ]     [ ]     [ ]     [ ]
+ -9                 [ ]     [x]     [ ]     [ ]     [ ]     [ ]     [ ]
+ Nuloss             [ ]     [ ]     [x]     [x]     [ ]     [ ]     [ ]
+ norbert            [ ]     [ ]     [x]     [x]     [ ]     [ ]     [ ]
+ aa                 [ ]     [ ]     [x]     [ ]     [x]     [x]     [ ]
+ BcD                [ ]     [ ]     [x]     [ ]     [ ]     [x]     [ ]
  */

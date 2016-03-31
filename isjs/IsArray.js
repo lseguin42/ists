@@ -15,9 +15,13 @@ function IsArrayLinker() {
     self.each = function (rules, options) {
         if (!options)
             options = {};
+        if (!options.end)
+            options.end = 0;
+        if (!options.start)
+            options.start = 0;
         return Rules.call(self, IsArrayLinker, function (value) {
-            var max = (!options.end ? value.length : (options.end < 0 ? value.length + options.end : options.end));
-            var min = (typeof options.start === 'undefined' ? 0 : (options.start < 0 ? max + options.start : options.start));
+            var max = ((value.length + (options.end - 1)) % value.length) + 1
+            var min = (options.start < 0 ? max + options.start : options.start);
             for (var i = min; i < max; i++) {
                 if (!rules(value[i]))
                     return false;
