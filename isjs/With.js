@@ -15,6 +15,16 @@ function WithLinker(linker) {
         });
     }
     
+    self.with.property = function (name, rule) {
+        return Rules.call(self, linker, function (object) {
+            if (!rule && typeof object[name] !== 'undefined')
+                return true;
+            else if (rule)
+                return rule(object[name]);
+            return false;
+        });
+    }
+    
     return self;
 }
 

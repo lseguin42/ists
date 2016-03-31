@@ -27,7 +27,9 @@ function IsStringLinker() {
     
     IsNumberLinker.call(self.len, IsStringLinker);
     NotLinker.call(self, IsStringLinker);
-    InLinker.call(self, IsStringLinker);
+    InLinker.call(self, IsStringLinker, function comparator(a, b) {
+        return (a === b ? 0 : 1);
+    });
     
     return self;
 }
