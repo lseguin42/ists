@@ -21,7 +21,7 @@ var table = [
 var ruleObject = is.object.with.properties({
     a: is.string.match(/^[A-Z]/),
     b: is.object.instanceOf(B).or(is.undefined),
-    c: is.array.and.each(is.number).or(is.undefined)
+    c: is.array.each(is.number).or(is.undefined)
 })
 
 var ruleTable = is.array.each(ruleObject);
