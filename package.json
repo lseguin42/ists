@@ -3,8 +3,7 @@
   "version": "0.3.2",
   "description": "Library for check any variable in javascript",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {},
   "keywords": [
     "ists",
@@ -13,6 +12,9 @@
     "is",
     "test",
     "variable"
+  ],
+  "typescript": [
+      "index.d.ts"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
