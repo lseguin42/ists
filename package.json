@@ -1,23 +1,30 @@
 {
-  "name": "checkjs",
-  "version": "0.1.0",
-  "description": "Alpha",
+  "name": "ists",
+  "version": "0.3.2",
+  "description": "Library for check any variable in javascript",
   "main": "index.js",
   "dependencies": {
-    "lodash": "^4.6.1"
   },
   "devDependencies": {},
+  "keywords": [
+    "ists",
+    "typescript",
+    "isjs",
+    "is",
+    "test",
+    "variable"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lseguin42/CheckJS.git"
+    "url": "git+https://github.com/lseguin42/ists.git"
   },
   "author": "Lionel Seguin (lseguin@student.42.fr)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lseguin42/CheckJS/issues"
+    "url": "https://github.com/lseguin42/ists/issues"
   },
-  "homepage": "https://github.com/lseguin42/CheckJS#readme"
+  "homepage": "https://github.com/lseguin42/ists#readme"
 }

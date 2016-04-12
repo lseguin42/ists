@@ -1,4 +1,4 @@
-# isJs
+# isTs
 Is Node.Js library to check any variable.
 This library include d.ts file for [TypeScript](https://www.typescriptlang.org/).
 
@@ -7,7 +7,7 @@ This library include d.ts file for [TypeScript](https://www.typescriptlang.org/)
 Install with [npm](http://npmjs.org/) (for NodeJS):
 
 ```shell
-npm install is --save
+npm install ists --save
 ```
 
 Incompatible for browser
@@ -16,7 +16,7 @@ Incompatible for browser
 
 TypeScript exemple
 ```typescript
-import is = require('isjs')
+import is = require('ists')
 
 var checkString = is.string.length.equal(5)
 checkString("abcde") // true
@@ -24,7 +24,7 @@ checkString("abcde") // true
 
 JavaScript exemple
 ```javascript
-var is = require('isjs')
+var is = require('ists')
 
 var checkString = is.string.length.equal(5)
 checkString("abcde") // true
