@@ -1,6 +1,6 @@
 {
   "name": "ists",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Library for check any variable in javascript",
   "main": "index.js",
   "dependencies": {},
